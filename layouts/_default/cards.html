@@ -1,0 +1,23 @@
+{{ define "main" }}
+<div class="space-y-12 py-8">
+    <header class="text-center space-y-6 mb-12">
+        <h1
+            class="text-4xl md:text-6xl font-display font-bold text-gray-900 dark:text-white bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-accent-600">
+            {{ .Title }}
+        </h1>
+        {{ with .Content }}
+        <div class="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-lg leading-relaxed">
+            {{ . }}
+        </div>
+        {{ end }}
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {{ range .Paginator.Pages }}
+        {{ partial "card.html" . }}
+        {{ end }}
+    </div>
+
+    {{ partial "pagination.html" . }}
+</div>
+{{ end }}

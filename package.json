@@ -1,0 +1,20 @@
+{
+  "name": "minmod",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "./node_modules/.bin/tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --minify",
+    "watch": "./node_modules/.bin/tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.19",
+    "autoprefixer": "^10.4.22",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.18"
+  }
+}

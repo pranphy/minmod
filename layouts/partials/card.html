@@ -1,0 +1,66 @@
+<article
+    class="group bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden border border-gray-100 dark:border-gray-700 flex flex-col h-full relative">
+    <div
+        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-500 to-accent-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left z-10">
+    </div>
+
+    <!-- Thumbnail -->
+    {{ $thumb := .Params.thumbnail }}
+    {{ if $thumb }}
+    <div
+        class="aspect-[21/9] w-full overflow-hidden bg-gray-100 dark:bg-gray-900 border-b border-gray-100 dark:border-gray-700 relative group-hover:opacity-90 transition-opacity">
+        {{ $thumbSrc := $thumb }}
+        {{ if not (hasPrefix $thumb "/") }}
+        {{ $thumbSrc = printf "/asset/image/%s" $thumb }}
+        {{ end }}
+        <img src="{{ $thumbSrc }}" alt="{{ .Title }}"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+    </div>
+    {{ end }}
+
+    <div class="p-5 flex flex-col flex-grow">
+        <div
+            class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400 mb-2">
+            <span
+                class="px-2 py-0.5 rounded-full bg-primary-50 dark:bg-primary-900/30 border border-primary-100 dark:border-primary-800">
+                {{ .Date.Format "Jan 02, 2006" }}
+            </span>
+            {{ range .Params.chips }}
+            <span
+                class="px-2 py-0.5 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-600">
+                {{ . }}
+            </span>
+            {{ end }}
+        </div>
+
+        <h2
+            class="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors leading-tight">
+            <a href="{{ .Params.hyperlink | default .RelPermalink }}" {{ if .Params.hyperlink }}target="_blank"
+                rel="noopener noreferrer" {{ end }} class="inline-flex items-center gap-1">
+                {{ .Title }}
+                {{ if .Params.hyperlink }}
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+                {{ end }}
+            </a>
+        </h2>
+
+        <p class="text-gray-600 dark:text-gray-400 text-sm line-clamp-3 mb-4 flex-grow leading-relaxed">
+            {{ .Params.description | default (.RawContent | truncate 200) }}
+        </p>
+
+        <a href="{{ .Params.hyperlink | default .RelPermalink }}" {{ if .Params.hyperlink }}target="_blank"
+            rel="noopener noreferrer" {{ end }}
+            class="inline-flex items-center text-xs font-bold text-primary-600 dark:text-primary-400 group-hover:underline uppercase tracking-wide mt-auto">
+            Read
+            <svg xmlns="http://www.w3.org/2000/svg"
+                class="h-3 w-3 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+        </a>
+    </div>
+</article>
