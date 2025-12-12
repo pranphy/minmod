@@ -53,7 +53,7 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            fontSize: 'var(--text-base-size, 1.5rem)', // Base size for prose (24px)
+            fontSize: 'var(--text-base-size, 1.2rem)', // Base size for prose (24px)
             lineHeight: '1.8',
             maxWidth: 'none',
             p: {
