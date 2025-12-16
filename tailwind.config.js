@@ -5,10 +5,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"EB Garamond"', '"Public Sans"', '"Noto Serif Devanagari"', 'sans-serif'],
-        serif: ['"EB Garamond"', '"Noto Serif Devanagari"', 'serif'],
+        sans: ['"Andada Pro"', '"Public Sans"', '"Noto Serif Devanagari"', 'sans-serif'],
+        serif: ['"Andada Pro"', '"Noto Serif Devanagari"', 'serif'],
         mono: ['"Iosevka Term"', 'monospace'],
-        display: ['"EB Garamond", "Public Sans"', '"EB Garamond"', '"Noto Serif Devanagari"', 'sans-serif'],
+        display: ['"Andada Pro"', '"Public Sans"', '"Noto Serif Devanagari"', 'sans-serif'],
       },
       colors: {
         primary: {
