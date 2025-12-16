@@ -1,9 +1,7 @@
 {{ define "main" }}
-<article
-    class="bg-white dark:bg-gray-800 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
+<article class="max-w-3xl mx-auto">
     <!-- Post Header -->
-    <header
-        class="p-8 md:p-12 border-b border-gray-100 dark:border-gray-700 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900">
+    <header class="px-8 pt-8 pb-4 md:px-12 md:pt-12 md:pb-4">
         <div class="flex flex-wrap gap-2 mb-6">
             {{ range .GetTerms "categories" }}
             <a href="{{ .RelPermalink }}"
@@ -12,7 +10,7 @@
             </a>
             {{ end }}
         </div>
-        <h1 class="text-3xl md:text-5xl font-display font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+        <h1 class="text-2xl md:text-4xl font-display font-bold text-gray-900 dark:text-white mb-4 leading-tight">
             {{ .Title }}
         </h1>
         <div class="flex items-center gap-4 text-gray-500 dark:text-gray-400 text-sm">
@@ -41,23 +39,51 @@
     </header>
 
     <!-- Post Content -->
-    <div class="p-8 md:p-12">
+    <div class="px-8 pb-8 pt-4 md:px-12 md:pb-12 md:pt-4">
         <div
-            class="prose dark:prose-invert max-w-none prose-headings:font-display prose-headings:font-bold prose-a:text-primary-600 dark:prose-a:text-primary-400 prose-img:rounded-xl">
+            class="prose dark:prose-invert max-w-none prose-headings:font-display prose-headings:font-bold prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-a:text-primary-600 dark:prose-a:text-primary-400 prose-img:rounded-xl">
             {{ .Content }}
         </div>
     </div>
 
     <!-- Post Footer -->
-    <footer class="p-8 md:p-12 border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/50">
+    <footer class="px-8 pb-8 md:px-12 md:pb-12 pt-0">
         <div class="flex flex-wrap gap-2">
             {{ range .Params.tags }}
             <a href="/tags/{{ . | urlize }}"
-                class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                class="inline-block px-3 py-1 rounded-full text-sm font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
                 #{{ . }}
             </a>
             {{ end }}
         </div>
+
+        <!-- Post Navigation -->
+        {{ if ne .Section "" }}
+        <nav
+            class="flex flex-col md:flex-row justify-between gap-4 mt-16 pt-8 border-t border-gray-100 dark:border-gray-700">
+            {{ with .NextInSection }}
+            <a href="{{ .RelPermalink }}" class="group flex flex-col text-left">
+                <span class="text-sm text-gray-400 mb-1">Previous</span>
+                <span
+                    class="text-lg text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors font-medium">
+                    ← {{ .Title }}
+                </span>
+            </a>
+            {{ else }}
+            <div></div>
+            {{ end }}
+
+            {{ with .PrevInSection }}
+            <a href="{{ .RelPermalink }}" class="group flex flex-col text-right">
+                <span class="text-sm text-gray-400 mb-1">Next</span>
+                <span
+                    class="text-lg text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors font-medium">
+                    {{ .Title }} →
+                </span>
+            </a>
+            {{ end }}
+        </nav>
+        {{ end }}
     </footer>
 </article>
 {{ end }}

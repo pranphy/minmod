@@ -5,10 +5,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"EB Garamond"', '"Noto Serif Devanagari"', 'serif'],
+        sans: ['"EB Garamond"', '"Public Sans"', '"Noto Serif Devanagari"', 'sans-serif'],
         serif: ['"EB Garamond"', '"Noto Serif Devanagari"', 'serif'],
         mono: ['"Iosevka Term"', 'monospace'],
-        display: ['"EB Garamond"', '"Noto Serif Devanagari"', 'serif'],
+        display: ['"EB Garamond", "Public Sans"', '"EB Garamond"', '"Noto Serif Devanagari"', 'sans-serif'],
       },
       colors: {
         primary: {
@@ -57,6 +57,7 @@ module.exports = {
             lineHeight: '1.8',
             maxWidth: 'none',
             p: {
+              textAlign: 'justify',
               marginTop: '1.5em',
               marginBottom: '1.5em',
             },
@@ -96,8 +97,7 @@ module.exports = {
               },
             },
             blockquote: {
-              borderLeftColor: theme('colors.accent.500'),
-              borderLeftWidth: '4px',
+              borderLeftWidth: '0',
               backgroundColor: 'transparent',
               padding: '0.5em 0.5em 0.5em 3em',
               fontStyle: 'italic',
@@ -124,13 +124,16 @@ module.exports = {
               content: 'none',
             },
             code: {
-              color: theme('colors.accent.600'),
+              color: 'inherit',
               backgroundColor: theme('colors.gray.100'),
               padding: '0.2em 0.4em',
               borderRadius: '0.25rem',
               fontWeight: '600',
               fontFamily: theme('fontFamily.mono'),
               fontSize: '0.75em',
+            },
+            'code::before': {
+              content: '""',
             },
             'code::after': {
               content: '""',
@@ -167,7 +170,7 @@ module.exports = {
               },
             },
             blockquote: {
-              borderLeftColor: theme('colors.accent.400'),
+              borderLeftWidth: '0',
               backgroundColor: 'transparent',
               color: theme('colors.gray.300'),
             },
@@ -175,7 +178,7 @@ module.exports = {
               color: theme('colors.accent.800'),
             },
             code: {
-              color: theme('colors.accent.300'),
+              color: 'inherit',
               backgroundColor: theme('colors.gray.800'),
             },
             pre: {

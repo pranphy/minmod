@@ -4,12 +4,13 @@
         <div class="flex justify-center gap-6 mb-8">
             {{ partial "social_icons.html" . }}
         </div>
-        <p class="text-gray-500 dark:text-gray-400 mb-2">
+        <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">
             &copy; {{ now.Year }} {{ .Site.Title }}. All rights reserved.
         </p>
-        <p class="text-sm text-gray-400 dark:text-gray-500">
+        <p class="text-xs text-gray-400 dark:text-gray-500">
             Designed with <span class="text-red-500">♥</span> using <a href="https://gohugo.io/"
-                class="hover:underline">Hugo</a> & <a href="#" class="hover:underline">Minmod</a>
+                class="hover:underline">Hugo</a> & <a href="https://github.com/pranphy/minmod"
+                class="hover:underline">Minmod</a>
         </p>
     </div>
     {{ if templates.Exists "partials/extend_footer.html" }}

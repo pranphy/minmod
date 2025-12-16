@@ -8,7 +8,7 @@
     {{ $thumb := .Params.thumbnail }}
     {{ if $thumb }}
     <div
-        class="aspect-[21/9] w-full overflow-hidden bg-gray-100 dark:bg-gray-900 border-b border-gray-100 dark:border-gray-700 relative group-hover:opacity-90 transition-opacity">
+        class="aspect-[21/9] w-full overflow-hidden bg-white border-b border-gray-100 dark:border-gray-700 relative group-hover:opacity-90 transition-opacity">
         {{ $thumbSrc := $thumb }}
         {{ if not (hasPrefix $thumb "/") }}
         {{ $thumbSrc = printf "/asset/image/%s" $thumb }}

@@ -812,8 +812,19 @@
         text-decoration: underline
     }
 
+    /* Punctuation */
+    .chroma .p {
+        color: #e6edf3
+    }
+
     /* TextWhitespace */
     .chroma .w {
         color: #6e7681
     }
+}
+/* Force Punctuation Visibility in Dark Mode */
+html.dark .chroma .p, 
+body.dark .chroma .p,
+.dark .chroma .p {
+    color: #e6edf3 !important;
 }
