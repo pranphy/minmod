@@ -36,7 +36,7 @@
     {{ if (fileExists $customCssPath) }}
     {{ range (readDir $customCssPath) }}
     {{ if strings.HasSuffix .Name ".css" }}
-    <link rel="stylesheet" href="{{ printf " /asset/css/%s" .Name | relURL }}">
+    <link rel="stylesheet" href="{{ printf "/asset/css/%s" .Name | relURL }}">
     {{ end }}
     {{ end }}
     {{ end }}
