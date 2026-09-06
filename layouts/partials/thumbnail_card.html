@@ -1,0 +1,25 @@
+<article
+    class="group relative overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 block bg-white dark:bg-gray-800 aspect-[4/3] w-full">
+    <a href="{{ .Params.hyperlink | default .RelPermalink }}" class="block h-full w-full relative">
+        {{ $thumb := .Params.thumbnail }}
+        {{ if $thumb }}
+        {{ $thumbSrc := $thumb }}
+        {{ if not (hasPrefix $thumb "/") }}
+        {{ $thumbSrc = printf "/asset/image/%s" $thumb }}
+        {{ end }}
+        <img src="{{ $thumbSrc }}" alt="{{ .Title }}"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        {{ else }}
+        <!-- Fallback if no image -->
+        <div class="w-full h-full bg-gradient-to-br from-primary-500 to-accent-500"></div>
+        {{ end }}
+
+        <!-- Title Overlay -->
+        <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent pt-12">
+            <h2
+                class="text-white font-bold text-lg md:text-xl leading-tight drop-shadow-md group-hover:text-primary-200 transition-colors">
+                {{ .Title }}
+            </h2>
+        </div>
+    </a>
+</article>
